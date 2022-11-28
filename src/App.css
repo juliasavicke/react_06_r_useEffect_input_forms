@@ -1,0 +1,5 @@
+.errorAlert {
+  color: tomato;
+  background-color: rgb(240, 213, 208);
+  border: 1px solid tomato;
+}
