@@ -3,3 +3,8 @@
   background-color: rgb(240, 213, 208);
   border: 1px solid tomato;
 }
+
+.doneTodo {
+  color: gray;
+  text-decoration: line-through;
+}

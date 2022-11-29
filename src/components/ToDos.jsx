@@ -25,6 +25,10 @@ function ToDos(props) {
 
   //main todo array for the app
   const [todosArr, setTodosArr] = useState(initTodos);
+
+  const totalTodos = todosArr.length;
+  const doneTodos = todosArr.filter((tObj) => tObj.done).length;
+
   let isTodosArrEmpty = !todosArr.length;
   console.log('isTodosArrEmpty ===', isTodosArrEmpty);
 
@@ -60,6 +64,7 @@ function ToDos(props) {
     });
     console.log('newState ===', newState);
     setTodosArr(newState);
+    console.log('todosArr ===', todosArr);
   }
 
   return (
@@ -76,13 +81,18 @@ function ToDos(props) {
         <h3>{newTodoValue}</h3>
       </fieldset>
       <div className='card'>
+        <h3>
+          Total todos: {totalTodos} / {doneTodos}
+        </h3>
         <h3>Todos:</h3>
 
         <ol>
           {todosArr.map((tObj) => (
-            <li key={tObj.id}>
+            <li key={tObj.id} className={tObj.done ? 'doneTodo' : ''}>
               {tObj.value}. Created: {tObj.date}
-              <button onClick={(e) => doneTodoHandler(tObj.id)}>done</button>
+              <button onClick={(e) => doneTodoHandler(tObj.id)}>
+                {!tObj.done ? 'done' : 'undo'}
+              </button>
               <button onClick={(e) => deleteTodoHandler(tObj.id)}>
                 delete
               </button>
